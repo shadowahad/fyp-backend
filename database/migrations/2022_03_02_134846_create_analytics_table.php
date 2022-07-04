@@ -21,9 +21,13 @@ class CreateAnalyticsTable extends Migration
             $table->string("number_available_in_stock")->nullable();
             $table->string("number_of_reviews")->nullable();
             $table->string("average_review_rating")->nullable();
-            $table->integer("sold")->nullable();
-            $table->string("entry_date")->nullable();
+            $table->date("entry_date");
             $table->unsignedBigInteger('file_id')->index()->nullable(); //->references('id')->on('file');
+            $table->string("sellingPrice")->nullable();
+            $table->string("old_cus")->nullable();
+            $table->string("new_cus")->nullable();
+            $table->string("pending_orders")->nullable();
+            $table->string("soldAmountProducts")->nullable();
             $table->timestamps();
         });
     }

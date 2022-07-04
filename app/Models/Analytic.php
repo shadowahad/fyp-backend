@@ -15,8 +15,12 @@ class Analytic extends Model
         'number_available_in_stock',
         'number_of_reviews',
         'average_review_rating',
-        'sold',
         'entry_date',
-        "file_id"
+        "file_id",
+        "sellingPrice",
+        "soldAmountProducts",
+        "old_cus",
+        "new_cus",
+        "pending_orders",
     ];
 }

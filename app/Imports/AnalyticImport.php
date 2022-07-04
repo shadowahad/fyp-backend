@@ -6,8 +6,7 @@ use App\Models\Analytic;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use App\Models\File as ModelsFile;
-
-
+use Carbon\Carbon;
 
 class AnalyticImport implements ToModel, WithHeadingRow
 {
@@ -51,9 +50,14 @@ class AnalyticImport implements ToModel, WithHeadingRow
             'number_available_in_stock' => str_replace("Â new", "", $row["number_available_in_stock"]),
             'number_of_reviews' => $row["number_of_reviews"], //to filter as number
             'average_review_rating' => $row["average_review_rating"], //to filter as number
-            'sold' => $row["sold"], //to filter as number
-            'entry_date' => $row["entry_date"], //to filter as number
+            // 'entry_date' => $row["entry_date"], //to filter as number
+            'entry_date' => Carbon::today()->subDays(rand(1, 150)),
             "file_id" => $file->id,
+            'sellingPrice' => $row["sellingprice"],
+            'soldAmountProducts' => $row["soldamountproducts"],
+            'old_cus' => $row["old_cus"],
+            'new_cus' => $row["new_cus"],
+            'pending_orders' => $row["pending_orders"],
             // // 'total_revenue'    => $row[1], // alsold * price (calculation)
         ]);
     }

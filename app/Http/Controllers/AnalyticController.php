@@ -22,7 +22,7 @@ class AnalyticController extends Controller
                 $files = $request->attachment;
                 $fileNameInReq = $request->name;
                 // foreach ($files as $file) {
-                $file_64 = $files; //your base64 encoded data
+                $file_64 = $files[0]; //your base64 encoded data
                 $extension = explode('/', explode(':', substr($file_64, 0, strpos($file_64, ';')))[1])[1];   // .jpg .png .pdf
                 // return response(['message' => $extension, 'code' => 200]);
                 if ($extension === "vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
@@ -43,8 +43,7 @@ class AnalyticController extends Controller
                 Excel::import(new AnalyticImport, $filelink);
                 return response(['message' => $filelink, 'code' => 200]);
             } catch (Throwable $e) {
-                return $e->getMessage("file not uploaded");
-                dd(($e));
+                return $e;
             }
         }
     }
