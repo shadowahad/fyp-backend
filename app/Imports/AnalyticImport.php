@@ -51,7 +51,7 @@ class AnalyticImport implements ToModel, WithHeadingRow
             'number_of_reviews' => $row["number_of_reviews"], //to filter as number
             'average_review_rating' => $row["average_review_rating"], //to filter as number
             // 'entry_date' => $row["entry_date"], //to filter as number
-            'entry_date' => Carbon::today()->subDays(rand(1, 150)),
+            'entry_date' => Carbon::parse(Carbon::today()->subDays(rand(1, 3))),
             "file_id" => $file->id,
             'sellingPrice' => $row["sellingprice"],
             'soldAmountProducts' => $row["soldamountproducts"],

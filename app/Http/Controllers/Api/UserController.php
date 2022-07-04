@@ -39,7 +39,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->type = 'Agent';
         if(isset($request->password)){
-            $user->password = Hash::make($password);
+            $user->password = Hash::make($request->password);
         }
         $user->save();
 

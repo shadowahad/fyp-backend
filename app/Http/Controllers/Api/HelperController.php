@@ -14,6 +14,10 @@ class HelperController extends Controller
 {
     //
     public function registerUser(Request $request){
+        $exist = User::where('email', $request->email)->first();
+        if(isset($exist)){
+            return response()->json("User already exist", 400);
+        }
         $password = $request->password;
         $data = [
             'name' => $request->name,

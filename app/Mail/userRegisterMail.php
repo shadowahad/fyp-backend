@@ -31,6 +31,6 @@ class userRegisterMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mails.register')->with(['user' => $this->user, 'password' => $this->password])->subject(config('app.name'));
+        return $this->markdown('mails.register')->with(['user' => $this->user, 'password' => $this->password])->subject("Smart Analytics");
     }
 }

@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Analytic extends Model
 {
     use HasFactory;
+    protected $dates  = [
+        'entry_date'
+    ];
     protected $fillable = [
         'product_name',
         'manufacturer',
