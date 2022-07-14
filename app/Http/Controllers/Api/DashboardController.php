@@ -96,30 +96,6 @@ class DashboardController extends Controller
         $old = Analytic::whereIn('file_id', $request->value)->orderBy('created_at', 'DESC')->limit(10)->get()->pluck('old_cus');
         $new = Analytic::whereIn('file_id', $request->value)->orderBy('created_at', 'DESC')->limit(10)->get()->pluck('new_cus');
 
-        //Investment VS Reveneue Monthly
-        // $investmentReveneues = Analytic::whereIn('file_id', $request->value)->first();
-        // foreach($investmentReveneues as $d){
-
-        // }
-        // $investmentReveneues = Analytic::groupBy(DB::raw("DATE_FORMAT(entry_date, '%d-%m-%Y')"))->get();
-        // foreach($investmentReveneues as $key => $val){
-        //     dd($key, $val);
-        // }
-        // $investmentReveneues = Analytic::select('id',
-        //                     DB::raw("(DATE_FORMAT(entry_date, '%d-%m-%Y')) as entry_date_1")
-        //                     )
-        //                     ->orderBy('entry_date')
-        //                     ->groupBy(DB::raw("DATE_FORMAT(entry_date, '%d-%m-%Y')"))
-        //                     ->get();
-        // return response()->json($investmentReveneues, 200);
-        // dd($investmentReveneues);
-
-        //Top Manufecture
-        // $investmentReveneues = Analytic::whereIn('file_id', $request->value)->groupBy(function($val) {
-        //     return $val->created_at->format('d-m');
-        // })->get();
-        // return response()->json($investmentReveneues, 200);
-
         $data = [
             'totalCustomers' => $totalCustomers,
             'totalReviews' => $totalReviews,
@@ -151,7 +127,7 @@ class DashboardController extends Controller
             'customerTrendGraph' => [
                 'old' => $old,
                 'new' => $new
-            ],
+            ]
         ];
         return response()->json($data, 200);
     }

@@ -34,6 +34,7 @@ Route::get('/analytics', [AnalyticController::class, 'getData']);
 Route::post('/register', [HelperController::class, 'registerUser']);
 Route::post('/forgetEmail', [HelperController::class, 'forgetEmail']);
 Route::post('/resetPassword', [HelperController::class, 'resetPassword']);
+Route::get('/dashaboadDate', [HelperController::class, 'dashaboadDate']);
 
 // User API
 Route::get('/user-get', [UserController::class, 'index']);

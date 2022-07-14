@@ -74,4 +74,86 @@ class HelperController extends Controller
             return 'No record found!';
         }
     }
+
+    public function dashaboadDate(){
+        //Investment VS Reveneue Monthly
+        $netProfit = range(1500, 5000);
+        shuffle($netProfit);
+        $netProfit = array_slice($netProfit ,0,5);
+
+        $revenue = range(5000, 10000);
+        shuffle($revenue);
+        $revenue = array_slice($revenue ,0,5);
+
+        $investment = range(500, 3000);
+        shuffle($netProfit);
+        $netProfit = array_slice($netProfit ,0,5);
+
+        $insvesment = [
+            'months' => ["May","Jun","Jul","Aug","Sep","Oct"],
+            'series' => [
+                [
+                    'name' => "Net Profit",
+                    'data' => $netProfit
+                ],
+                [
+                    'name' => "Revenue",
+                    'data' => $revenue
+                ],
+                [
+                    'name' => "Investment",
+                    'data' => $netProfit
+                ],
+            ],
+        ];
+
+        //Top Manufecture
+        $netProfit = range(1500, 5000);
+        shuffle($netProfit);
+        $netProfit = array_slice($netProfit ,0,5);
+
+        $revenue = range(1500, 5000);
+        shuffle($revenue);
+        $revenue = array_slice($revenue ,0,5);
+
+        $investment = range(1500, 5000);
+        shuffle($netProfit);
+        $netProfit = array_slice($netProfit ,0,5);
+
+        $name = [
+            'Nike',
+            'Hornby',
+            'Bachmann',
+            'Faller',
+            'Dapol',
+            'Corgi',
+        ];
+        $key = shuffle($name);
+        $topManufecture = [
+            'months' => ["May","Jun","Jul","Aug","Sep","Oct"],
+            'series' => [
+                [
+                    'name' => $name[0],
+                    'type' => "column",
+                    'data' => $netProfit
+                ],
+                [
+                    'name' => $name[1],
+                    'type' => "area",
+                    'data' => $revenue
+                ],
+                [
+                    'name' => $name[2],
+                    'type' => "line",
+                    'data' => $netProfit
+                ],
+            ],
+        ];
+
+        $data = [
+            'investmentReveneueMonthly' => $insvesment,
+            'topManufecture' => $topManufecture
+        ];
+        return response()->json($data, 200);
+    }
 }
